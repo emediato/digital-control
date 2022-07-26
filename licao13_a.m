@@ -1,0 +1,12 @@
+T = 0.1;
+A = [0 1;0 -1];
+B = [0;10];
+C = [1 0];
+D = 0;
+M = ss(A,B,C,D);
+M_d1 = c2d(M,T,'tustin');
+M_d2 = c2d(M,T,'zoh');
+Ad1 = eye(2)+T*A;
+Ad2 = eye(2)+(T*A)+(A^2)*T^2/factorial(2);
+Ad3 = eye(2)+(T*A)+(A^2)*T^2/factorial(2)+(A^3)*T^3/factorial(3);
+Ae = expm(A*T);
